@@ -1,4 +1,5 @@
 # FireGoose_V0.99
+根据FireGoose_V1的资料画的PCB板
 制作工艺
 
  - PCB制板:无铅 黑油喷锡
