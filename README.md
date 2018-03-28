@@ -1,5 +1,5 @@
 # FireGoose_V0.99
-根据FireGoose_V1的资料画的PCB板
+根据[FireGoose_V1.0][1]的资料画的PCB板
 制作工艺
 
  - PCB制板:无铅 黑油喷锡
@@ -26,3 +26,6 @@ void loop() {
   delay(100);
 }
 ```
+
+
+  [1]: https://github.com/RadioWar/FireGoose
