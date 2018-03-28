@@ -1,0 +1,16 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Documents.PrjPcb|ReportField=ProjectFullPath~D:\K1two2\Desktop\teensy\teensy\PCB文件黑\Documents\Documents.PrjPcb|ReportField=Title~Bill of Materials For Project [Documents.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~22|ReportField=ReportTime~11:36:08|ReportField=ReportDate~2018/3/28|ReportField=ReportDateTime~2018/3/28 11:36:08|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2018/3/28|ReportField=CurrentTime~11:36:04|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\K1two2\Desktop\teensy\teensy\PCB文件黑\Documents\Sheet1.Sch|ReportField=DocumentName~Sheet1.Sch|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2018/3/28|ReportField=Organization~|ReportField=ProjectName~Documents.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~0|ReportField=SheetTotal~0|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~Documents.PrjPcb|ReportField=DataSourceFullPath~D:\K1two2\Desktop\teensy\teensy\PCB文件黑\Documents\Documents.PrjPcb
+1.2uF|Capacitor|C1, C9||CAP|2
+1uF|Capacitor|C2||CAP|1
+100nF|Capacitor|C3, C5, C7, C8||CAP|4
+10pF|Capacitor|C4, C6||CAP|2
+SW||KEY1||SW|1
+RED||LED1||LED|1
+SD||minisd||SD|1
+OSAC|NPN Transistor|Q1||NPN1|1
+22R||R1, R2||RES1|2
+1K||R3, R4||RES1|2
+10K||R5||RES1|1
+AT90USB1286-MU||U1||AT90USB1286-MU|1
+LCX125||U2||LCX125|1
+USB-A公沉板前插后贴||usb1||USB|1
+16.000MHz||X1||XT|1

@@ -1,0 +1,118 @@
+小小的程序，命令行
+这个小小的装载机在那些想要自动化编程的高级用户命令行的版本，通常使用一个makefile。对于大多数用途，在自动模式的图形化版本是容易得多。
+
+下载文件：
+
+
+小小的程序命令行源（GitHub）
+
+Teensy Loader Command Line Source (github)
+
+
+Linux: udev rules for Teensy
+---------------------------------------
+# UDEV Rules for Teensy boards, http://www.pjrc.com/teensy/
+#
+# The latest version of this file may be found at:
+#   http://www.pjrc.com/teensy/49-teensy.rules
+#
+# This file must be placed at:
+#
+# /etc/udev/rules.d/49-teensy.rules    (preferred location)
+#   or
+# /lib/udev/rules.d/49-teensy.rules    (req'd on some broken systems)
+#
+# To install, type this command in a terminal:
+#   sudo cp 49-teensy.rules /etc/udev/rules.d/49-teensy.rules
+#
+# After this file is installed, physically unplug and reconnect Teensy.
+#
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", ENV{MTP_NO_PROBE}="1"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", MODE:="0666"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", MODE:="0666"
+#
+# If you share your linux system with other users, or just don't like the
+# idea of write permission for everybody, you can replace MODE:="0666" with
+# OWNER:="yourusername" to create the device owned by you, or with
+# GROUP:="somegroupname" and mange access using standard unix groups.
+#
+#
+# If using USB Serial you get a new device each time (Ubuntu 9.10)
+# eg: /dev/ttyACM0, ttyACM1, ttyACM2, ttyACM3, ttyACM4, etc
+#    apt-get remove --purge modemmanager     (reboot may be necessary)
+#
+# Older modem proding (eg, Ubuntu 9.04) caused very slow serial device detection.
+# To fix, add this near top of /lib/udev/rules.d/77-nm-probe-modem-capabilities.rules
+#   SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", GOTO="nm_modem_probe_end" 
+#
+
+------------------------------------------
+
+对于小小的udev规则
+FreeBSD：对于小器件
+
+---------------------------------------------
+# To make Teensy user-accessible in FreeBSD, it's necessary (as root)
+# to put the attached file in the directory /usr/local/etc/devd, and
+# then type "/etc/rc.d/devd restart".  Then when the Teensy is
+# attached, the device will be readable/writable by everybody.
+#
+# contributed by George Mitchell, george at m5p dot com
+#
+# Change permissions for Teensy device
+notify 100 {
+	match "system" "USB";
+	match "subsystem" "DEVICE";
+	match "type" "ATTACH";
+	match "vendor" "0x16c0";
+	match "product" "0x0478";
+# Select appropriate action
+#	action "chown YOURUSERNAME /dev/$cdev";
+#	action "chgrp YOURGROUPNAME /dev/$cdev";
+	action "chmod 666 /dev/$cdev";
+};
+
+
+--------------------------------------------
+
+
+
+源编译
+命令行版本作为大多数平台的源代码。编译，你必须有GCC或MinGW安装。编辑Makefile来选择你的操作系统，然后才型“制造”。如果你有一个BSD兼容，取代“Makefile”与“makefile。BSD”。
+2版已在Ubuntu 9.04测试，MAC OS 10.5，Windows XP，FreeBSD 8，OpenBSD（20-jan-2010快照），和NetBSD 5.0.1。所有版本的USB支持基于NT的Windows（2000后）被认为工作。
+在Ubuntu，你可能需要安装“libusb开发“编译。
+
+
+sudo apt-get install libusb开发
+
+
+使用和命令行选项
+命令行中的一个典型用法可能看起来像这样：
+
+
+teensy_loader_cli - mmcu = atmega32u4 W blink_fast.hex
+
+
+-------------------------------------------------------------------
+
+命令行参数：
+- mmcu = <单片机>：指定处理器。必须指定目标处理器。这个语法是用GCC一样，使你更容易融入makefile。有效选项：
+
+-mmcu=mk20dx256 :	Teensy 3.1 (linux only)
+-mmcu=mk20dx128 :	Teensy 3.0 (linux only)
+-mmcu=mkl26z64 :	Teensy-LC (linux only)
+-mmcu=atmega32u4 :	Teensy 2.0
+-mmcu=at90usb1286 :	Teensy++ 2.0
+-mmcu=at90usb162 :	Teensy 1.0
+-mmcu=at90usb646 :	Teensy++ 1.0
+
+
+注意：HEX文件编写USB的支持必须编译正确的芯片。如果你加载文件建立了一个不同的芯片，经常将它挂在试图初始化USB控制器芯片（每个芯片都有一个不同的时钟发生器锁相环）。在一些电脑，这可以“迷惑”你的USB端口和冷启动可能需要恢复的USB功能。当一个小小的被这种不正确的代码编程，复位按钮必须举行了在USB电缆连接，然后后才发布的USB电缆完全连接。
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+
